@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJE — Brújula de Vida y Coherencia Interior</title>
+  <!-- Google Fonts: Inter & Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            stone: {
+              50: '#fafaf9',
+              100: '#f5f5f4',
+              200: '#e7e5e4',
+              300: '#d6d3d1',
+              400: '#a8a29e',
+              500: '#78716c',
+              600: '#57534e',
+              700: '#44403c',
+              800: '#292524',
+              900: '#1c1917',
+              950: '#0c0a09',
+            },
+            salvia: {
+              50: '#f3f6f3',
+              100: '#e4ebe4',
+              200: '#c8d7c8',
+              500: '#5a765e',
+              600: '#465e49',
+              700: '#384b3b',
+            },
+            terracotta: {
+              50: '#fbf5f3',
+              100: '#f6e9e4',
+              200: '#eed2c7',
+              500: '#c2674e',
+              600: '#a3503b',
+              700: '#843f2e',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Suavizado de bordes y tipografía */
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    /* Animación del círculo de respiración de anclaje */
+    @keyframes breathePacer {
+      0% { transform: scale(1); opacity: 0.6; }
+      40% { transform: scale(1.65); opacity: 1; }
+      60% { transform: scale(1.65); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.6; }
+    }
+    .animate-breathe {
+      animation: breathePacer 14s infinite ease-in-out;
+    }
+    /* Estilización del scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #d6d3d1;
+      border-radius: 9999px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #44403c;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF9F6] text-stone-800 dark:bg-[#121110] dark:text-stone-200 min-h-screen flex flex-col font-sans selection:bg-salvia-100 selection:text-salvia-700 dark:selection:bg-stone-800 transition-colors duration-200">
+
+  <!-- CABECERA PRINCIPAL -->
+  <header class="sticky top-0 z-40 bg-[#FAF9F6]/90 dark:bg-[#121110]/90 backdrop-blur-md border-b border-stone-200/80 dark:border-stone-800/80">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <!-- Marca -->
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-full border border-stone-400 dark:border-stone-600 flex items-center justify-center font-serif text-base italic text-stone-900 dark:text-stone-100 bg-stone-100 dark:bg-stone-900 shadow-sm">
+          ◎
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="font-serif text-xl tracking-tight font-semibold text-stone-900 dark:text-stone-50">EJE</span>
+            <span class="text-[10px] font-mono tracking-widest uppercase px-1.5 py-0.5 rounded bg-stone-200/70 dark:bg-stone-800 text-stone-600 dark:text-stone-400 font-medium">V.1.0</span>
+          </div>
+          <p class="text-[11px] text-stone-500 dark:text-stone-400 hidden sm:block -mt-0.5">Brújula de Vida y Coherencia Interior</p>
+        </div>
+      </div>
+
+      <!-- Acciones de cabecera -->
+      <div class="flex items-center space-x-2">
+        <!-- Selector Modo Oscuro -->
+        <button id="themeToggleBtn" aria-label="Cambiar tema visual" class="p-2 rounded-xl text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition">
+          <svg id="sunIcon" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moonIcon" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.03 9.03 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- Botón Menú de Datos -->
+        <button onclick="toggleModal('dataModal', true)" class="text-xs px-3 py-1.5 rounded-xl border border-stone-300 dark:border-stone-700 hover:bg-stone-200/50 dark:hover:bg-stone-800/60 text-stone-700 dark:text-stone-300 transition flex items-center space-x-1.5 font-medium">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+          </svg>
+          <span class="hidden sm:inline">Gestión de</span> <span>Datos</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Pestañas de Navegación -->
+    <nav class="max-w-4xl mx-auto px-4 sm:px-6 flex space-x-4 sm:space-x-8 text-xs sm:text-sm overflow-x-auto scrollbar-none border-t border-stone-100 dark:border-stone-800/60">
+      <button onclick="switchTab('ikigai')" id="tabBtn-ikigai" class="tab-button py-3 border-b-2 font-medium transition whitespace-nowrap border-stone-900 text-stone-900 dark:border-stone-100 dark:text-stone-100">
+        1. Brújula Ikigai
+      </button>
+      <button onclick="switchTab('mecha')" id="tabBtn-mecha" class="tab-button py-3 border-b-2 font-medium transition whitespace-nowrap border-transparent text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200">
+        2. Calibrador de Mecha
+      </button>
+      <button onclick="switchTab('sembrador')" id="tabBtn-sembrador" class="tab-button py-3 border-b-2 font-medium transition whitespace-nowrap border-transparent text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200">
+        3. Sembrador de Hoy
+      </button>
+      <button onclick="switchTab('friccion')" id="tabBtn-friccion" class="tab-button py-3 border-b-2 font-medium transition whitespace-nowrap border-transparent text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200">
+        4. Auditoría de Fricción
+      </button>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO CENTRAL -->
+  <main class="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6 pb-24">
+
+    <!-- Cita Inspiradora Dinámica -->
+    <div id="wisdomQuote" class="mb-6 p-4 rounded-2xl bg-stone-100/60 dark:bg-stone-900/40 border border-stone-200/60 dark:border-stone-800/60 text-xs sm:text-sm text-stone-600 dark:text-stone-400 flex items-start space-x-3 transition">
+      <span class="text-salvia-500 text-lg leading-none mt-0.5">❦</span>
+      <p id="wisdomText" class="font-serif italic text-stone-700 dark:text-stone-300"></p>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 1: BRÚJULA IKIGAI (EL VEHÍCULO)     -->
+    <!-- ========================================== -->
+    <section id="section-ikigai" class="space-y-6">
+      
+      <!-- Introducción / Contexto -->
+      <div class="bg-white dark:bg-stone-900 p-6 rounded-3xl border border-stone-200/80 dark:border-stone-800/80 shadow-sm space-y-3">
+        <div class="flex items-center space-x-2 text-salvia-600 dark:text-salvia-500 text-xs font-mono font-semibold tracking-wider uppercase">
+          <span>Paso 1</span>
+          <span>·</span>
+          <span>Descubrimiento Vocacional y Svadharma</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-serif font-medium text-stone-900 dark:text-stone-50 leading-tight">
+          ¿Hacia dónde apunta tu naturaleza?
+        </h1>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl">
+          El propósito del ser no se inventa por ambición: se descubre prestando atención a lo que te da vida genuina, tus facilidades innatas y lo que el mundo sufre a tu alrededor. Rellena los 4 cuadrantes para sintetizar tu <strong>Declaración de Dirección Vital</strong>.
+        </p>
+      </div>
+
+      <!-- Cuadrantes Interactivos -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- Cuadrante 1: Vitalidad -->
+        <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/80 dark:border-stone-800/80 space-y-2.5">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xs font-bold">1</span>
+            <h3 class="text-sm font-semibold text-stone-900 dark:text-stone-100 font-serif">Vitalidad y Gozo Limpio</h3>
+          </div>
+          <p class="text-[11px] text-stone-500 dark:text-stone-400 leading-normal">
+            ¿Qué actividades realizas donde el tiempo desaparece, sin que importe si hay aplausos, seguidores o dinero?
+          </p>
+          <textarea id="ikigaiJoy" rows="3" placeholder="Ej: Escribir ideas con calma, reparar cosas, escuchar a amigos en crisis, investigar sobre biología..." class="w-full text-xs sm:text-sm bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 rounded-xl p-3 text-stone-800 dark:text-stone-200 focus:border-stone-400 resize-none transition"></textarea>
+        </div>
+
+        <!-- Cuadrante 2: Talentos Innatos -->
+        <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/80 dark:border-stone-800/80 space-y-2.5">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-salvia-50 dark:bg-salvia-900/30 text-salvia-600 dark:text-salvia-400 flex items-center justify-center text-xs font-bold">2</span>
+            <h3 class="text-sm font-semibold text-stone-900 dark:text-stone-100 font-serif">Fortalezas Naturales (Svadharma)</h3>
+          </div>
+          <p class="text-[11px] text-stone-500 dark:text-stone-400 leading-normal">
+            ¿Qué habilidades o facultades te resultan orgánicas y otros suelen pedirte consejo o ayuda para resolver?
+          </p>
+          <textarea id="ikigaiStrengths" rows="3" placeholder="Ej: Sintetizar conceptos difíciles de forma sencilla, templar el ánimo cuando hay conflicto, diseñar con armonía..." class="w-full text-xs sm:text-sm bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 rounded-xl p-3 text-stone-800 dark:text-stone-200 focus:border-stone-400 resize-none transition"></textarea>
+        </div>
+
+        <!-- Cuadrante 3: La Herida del Mundo -->
+        <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/80 dark:border-stone-800/80 space-y-2.5">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-terracotta-50 dark:bg-terracotta-900/30 text-terracotta-600 dark:text-terracotta-400 flex items-center justify-center text-xs font-bold">3</span>
+            <h3 class="text-sm font-semibold text-stone-900 dark:text-stone-100 font-serif">La Herida que te Conmueve</h3>
+          </div>
+          <p class="text-[11px] text-stone-500 dark:text-stone-400 leading-normal">
+            Frankl: «El sentido responde a lo que la vida te pide». ¿Qué dolor, injusticia o necesidad ajena toca tu compasión?
+          </p>
+          <textarea id="ikigaiNeed" rows="3" placeholder="Ej: La soledad de las personas mayores, la desinformación ansiosa, el caos operativo en pequeños negocios..." class="w-full text-xs sm:text-sm bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 rounded-xl p-3 text-stone-800 dark:text-stone-200 focus:border-stone-400 resize-none transition"></textarea>
+        </div>
+
+        <!-- Cuadrante 4: Sostenibilidad Vital -->
+        <div class="bg-white dark:bg-stone-900 p-5 rounded-2xl border border-stone-200/80 dark:border-stone-800/80 space-y-2.5">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 flex items-center justify-center text-xs font-bold">4</span>
+            <h3 class="text-sm font-semibold text-stone-900 dark:text-stone-100 font-serif">Sostenibilidad Realista</h3>
+          </div>
+          <p class="text-[11px] text-stone-500 dark:text-stone-400 leading-normal">
+            ¿Cómo se traduce esto en un sustento honesto o en un ritmo que respete tu salud física y mental sin quemarte?
+          </p>
+          <textarea id="ikigaiSustain" rows="3" placeholder="Ej: Servicios de consultoría 1 a 1, talleres grupales, creación de software útil sin publicidad intrusiva..." class="w-full text-xs sm:text-sm bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 rounded-xl p-3 text-stone-800 dark:text-stone-200 focus:border-stone-400 resize-none transition"></textarea>
+        </div>
+
+      </div>
+
+      <!-- Botón Sintetizar Brújula -->
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-3 bg-stone-100/70 dark:bg-stone-900/60 p-4 rounded-2xl border border-stone-200 dark:border-stone-800">
+        <p class="text-xs text-stone-500 dark:text-stone-400">
+          Al integrar tus 4 cuadrantes, la brújula genera tu <strong>Dirección Vital Activa</strong>.
+        </p>
+        <button onclick="synthesizeCompass()" class="w-full sm:w-auto text-xs font-semibold px-5 py-2.5 rounded-xl bg-stone-900 hover:bg-black text-white dark:bg-stone-100 dark:hover:bg-white dark:text-stone-900 transition flex items-center justify-center space-x-2 shadow-sm">
+          <span>Sintetizar Mi Dirección Vital</span>
+          <span>→</span>
+        </button>
+      </div>
+
+      <!-- Dirección Vital Activa Generada -->
+      <div id="activeCompassCard" class="hidden bg-white dark:bg-stone-900 p-6 rounded-3xl border-2 border-salvia-500/40 dark:border-salvia-500/30 space-y-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-medium bg-salvia-50 text-salvia-700 dark:bg-salvia-950/50 dark:text-salvia-300 border border-salvia-200/50 dark:border-salvia-800/50">
+            <span class="w-1.5 h-1.5 rounded-full bg-salvia-500 animate-pulse"></span>
+            <span>Brújula Vital Activa</span>
+          </span>
+          <button onclick="editCurrentCompass()" class="text-xs text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 underline">Modificar</button>
+        </div>
+
+        <div>
+          <h2 id="compassStatement" class="font-serif text-xl sm:text-2xl font-medium text-stone-900 dark:text-stone-50 leading-relaxed italic"></h2>
+          <p id="compassSubtext" class="text-xs text-stone-500 dark:text-stone-400 mt-2 leading-relaxed"></p>
+        </div>
+
+        <div class="pt-3 border-t border-stone-100 dark:border-stone-800 flex flex-wrap items-center justify-between gap-3 text-xs text-stone-500">
+          <div class="flex items-center space-x-2">
+            <span class="text-stone-400">Principios rectores:</span>
+            <span class="font-medium text-stone-700 dark:text-stone-300">Esfuerzo Gozoso · Causa en el Presente · Desapego del Fruto</span>
+          </div>
+          <button onclick="switchTab('mecha')" class="font-medium text-salvia-600 dark:text-salvia-400 hover:underline">
+            Evaluar la mecha de este propósito →
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 2: TEST DE MECHA (MOTIVACIÓN)       -->
+    <!-- ========================================== -->
+    <section id="section-mecha" class="hidden space-y-6">
+      
+      <div class="bg-white dark:bg-stone-900 p-6 rounded-3xl border border-stone-200/80 dark:border-stone-800/80 shadow-sm space-y-3">
+        <div class="flex items-center space-x-2 text-amber-600 dark:text-amber-500 text-xs font-mono font-semibold tracking-wider uppercase">
+          <span>Paso 2</span>
+          <span>·</span>
+          <span>La Calidad del Combustible</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-serif font-medium text-stone-900 dark:text-stone-50 leading-tight">
+          Calibrador de la Mecha
+        </h1>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl">
+          Como enseña el Lama Rinchen: un objetivo puede ser externamente idéntico, pero si la <em>mecha</em> es el miedo a quedarse atrás o la vanidad, arderá rápido con humo y desgaste. Si la mecha es el amor y el servicio, su llama es constante y silenciosa.
+        </p>
+      </div>
+
+      <!-- Formulario de Evaluación de Proyecto -->
+      <div class="bg-white dark:bg-stone-900 p-6 rounded-3xl border border-stone-200/80 dark:border-stone-800/80 space-y-6">
+        <div>
+          <label class="block text-xs font-semibold text-stone-800 dark:text-stone-200 mb-1.5">
+            Proyecto, meta u objetivo actual que deseas calibrar:
+          </label>
+          <input type="text" id="mechaProjectTitle" placeholder="Ej: Escribir mi libro / Cambiar de carrera profesional / Lanzar mi proyecto..." class="w-full text-sm bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 rounded-xl px-3.5 py-2.5 text-stone-900 dark:text-stone-100 focus:border-stone-400 transition">
+        </div>
+
+        <!-- Las 5 Preguntas Psicológicas de Discernimiento -->
+        <div class="space-y-4">
+          
+          <!-- Pregunta 1 -->
+          <div class="p-4 rounded-2xl bg-stone-50/80 dark:bg-stone-950/60 border border-stone-200/70 dark:border-stone-800/80 space-y-2.5">
+            <span class="text-xs font-semibold text-stone-900 dark:text-stone-100 block">
+              1. Origen de la urgencia: ¿Desde qué estado de ánimo acometes el proyecto?
+            </span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <label class="flex items-start space-x-2.5 p-2.5 rounded-xl border border-transparent hover:bg-stone-100 dark:hover:bg-stone-900 cursor-pointer transition">
+                <input type="radio" name="mq1" value="serena" class="mt-0.5 text-stone-900 focus:ring-0">
+                <span class="text-stone-600 dark:text-stone-400">Curiosidad limpia, vocación pacífica y deseo de cuidar los detalles.</span>
+              </label>
+              <label class="flex items-start space-x-2.5 p-2.5 rounded-xl border border-transparent hover:bg-stone-100 dark:hover:bg-stone-900 cursor-pointer transition">
+                <input type="radio" name="mq1" value="reactiva" class="mt-0.5 text-stone-900 focus:ring-0">
+                <span class="text-stone-600 dark:text-stone-400">Prisa interna, sensación de estar retrasado respecto a los demás o autoexigencia asfixiante.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 2 -->
+          <div class="p-4 rounded-2xl bg-stone-50/80 dark:bg-stone-950/60 border border-stone-200/70 dark:border-stone-800/80 space-y-2.5">
+            <span class="text-xs font-semibold text-stone-900 dark:text-stone-100 block">
+              2. El Test del Anonimato: Si nadie jamás pudiera felicitarte ni saber que lo hiciste...
+            </span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <label class="flex items-start space-x-2.5 p-2.5 rounded-xl border border-transparent hover:bg-stone-100 dark:hover:bg-stone-900 cursor-pointer transition">
+                <input type="radio" name="mq2" value="serena" class="mt-0.5 text-stone-900 focus:ring-0">
+                <span class="text-stone-600 dark:text-stone-400">Seguiría haciéndolo exactamente igual; el valor está en la acción misma.</span>
+              </label>
+              <label class="flex items-start space-x-2.5 p-2.5 rounded-xl border border-transparent hover:bg-stone-100 dark:hover:bg-stone-900 cursor-pointer transition">
+                <input type="radio" name="mq2" value="reactiva" class="mt-0.5 text-stone-900 focus:ring-0">
+                <span class="text-stone-600 dark:text-stone-400">Perdería casi toda mi motivación; necesito que se vea y se reconozca.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 3 -->
+          <div class="p-4 rounded-2xl bg-stone-50/80 dark:bg-stone-950/60 border border-stone-200/70 dark:border-stone-800/80 space-y-2.5">
+            <span class="text-xs font-semibold text-stone-900 dark:text-stone-100 block">
+              3. Relación con los tiempos y el resultado:
+            </span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <label class="flex items-start space-x-2.5 p-2.5 rounded-xl border border-transparent hover:bg-stone-100 dark:hover:bg-stone-900 cursor-pointer transition">
+                <input type="radio" name="mq3" value="serena" class="mt-0.5 text-stone-900 focus:ring-0">
+                <span class="text-stone-600 dark:text-stone-400">Acepto los plazos orgánicos; si tarda el doble, persevero sin drama.</span>
+              </label>
+              <label class="flex items-start space-x-2.5 p-2.5 rounded-xl border border-transparent hover:bg-stone-100 dark:hover:bg-stone-900 cursor-pointer transition">
+                <input type="radio" name="mq3" value="reactiva" class="mt-0.5 text-stone-900 focus:ring-0">
+                <span class="text-stone-600 dark:text-stone-400">Si las cosas se retrasan o no salen como planifiqué, siento rabia y vacío.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 4 -->
+          <div class="p-4 rounded-2xl bg-stone-50/80 dark:bg-stone-950/60 border border-stone-200/70 dark:border-stone-800/80 space-y-2.5">
+            <span class="text-xs font-semibold text-stone-900 dark:text-stone-100 block">
+              4. Naturaleza del Esfuerzo (Vīrya):
+            </span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <label class="flex items-start space-x-2.5 p-2.5 rounded-xl border border-transparent hover:bg-stone-100 dark:hover:bg-stone-900 cursor-pointer transition">
+                <input type="radio" name="mq4" value="serena" class="mt-0.5 text-stone-900 focus:ring-0">
+                <span class="text-stone-600 dark:text-stone-400">Esfuerzo gozoso: me concentro y disfruto del oficio presente sin crispación.</span>
+              </label>
+              <label class="flex items-start space-x-2.5 p-2.5 rounded-xl border border-transparent hover:bg-stone-100 dark:hover:bg-stone-900 cursor-pointer transition">
+                <input type="radio" name="mq4" value="reactiva" class="mt-0.5 text-stone-900 focus:ring-0">
+                <span class="text-stone-600 dark:text-stone-400">Esfuerzo crispado: aprieto los dientes para "llegar a la meta y poder descansar".</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 5 -->
+          <div class="p-4 rounded-2xl bg-stone-50/80 dark:bg-stone-950/60 border border-stone-200/70 dark:border-stone-800/80 space-y-2.5">
+            <span class="text-xs font-semibold text-stone-900 dark:text-stone-100 block">
+              5. La Meta como Destino vs. Punto de Partida:
+            </span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <label class="flex items-start space-x-2.5 p-2.5 rounded-xl border border-transparent hover:bg-stone-100 dark:hover:bg-stone-900 cursor-pointer transition">
+                <input type="radio" name="mq5" value="serena" class="mt-0.5 text-stone-900 focus:ring-0">
+                <span class="text-stone-600 dark:text-stone-400">Sé que lograrlo será solo el inicio de otro ciclo; no busco que me complete.</span>
+              </label>
+              <label class="flex items-start space-x-2.5 p-2.5 rounded-xl border border-transparent hover:bg-stone-100 dark:hover:bg-stone-900 cursor-pointer transition">
+                <input type="radio" name="mq5" value="reactiva" class="mt-0.5 text-stone-900 focus:ring-0">
+                <span class="text-stone-600 dark:text-stone-400">Fantaseo con que al lograr esto "por fin seré feliz y valorado".</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <button onclick="calculateMechaScore()" class="w-full text-xs font-semibold py-3 rounded-xl bg-stone-900 hover:bg-black text-white dark:bg-stone-100 dark:hover:bg-white dark:text-stone-900 transition flex items-center justify-center space-x-2 shadow-sm">
+          <span>Diagnosticar Calidad de Combustible</span>
+          <span>✦</span>
+        </button>
+
+        <!-- Resultado de la Calibración -->
+        <div id="mechaResultBox" class="hidden p-6 rounded-3xl border transition-all duration-300 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b pb-3 border-stone-200/60 dark:border-stone-800/60">
+            <div>
+              <span id="mechaBadge" class="text-xs font-mono font-medium uppercase px-2.5 py-0.5 rounded-full"></span>
+              <h3 id="mechaTitle" class="font-serif text-lg font-medium text-stone-900 dark:text-stone-50 mt-1"></h3>
+            </div>
+            <div class="text-left sm:text-right">
+              <span id="mechaScorePercentage" class="text-2xl font-serif font-bold"></span>
+              <span class="text-xs text-stone-400 block -mt-1">Índice de Serenidad</span>
+            </div>
+          </div>
+
+          <!-- Barra de Proporción -->
+          <div class="w-full bg-stone-200 dark:bg-stone-800 h-2 rounded-full overflow-hidden flex">
+            <div id="mechaBarSerena" class="bg-salvia-500 h-full transition-all duration-500" style="width: 50%"></div>
+            <div id="mechaBarReactiva" class="bg-terracotta-500 h-full transition-all duration-500" style="width: 50%"></div>
+          </div>
+
+          <!-- Diagnóstico y Reencuadre -->
+          <div class="space-y-2 text-xs leading-relaxed text-stone-600 dark:text-stone-300">
+            <p id="mechaDiagnosis"></p>
+            <div class="p-3.5 rounded-xl bg-white/60 dark:bg-stone-900/60 border border-stone-200/60 dark:border-stone-800/60">
+              <strong class="text-stone-800 dark:text-stone-100 block mb-1">Prescripción para purificar la mecha:</strong>
+              <p id="mechaPrescription" class="italic text-stone-600 dark:text-stone-400"></p>
+            </div>
+          </div>
+
+          <div class="flex justify-end pt-2">
+            <button onclick="saveMechaAudit()" class="text-xs px-3.5 py-1.5 rounded-lg border border-stone-300 dark:border-stone-700 hover:bg-stone-200/50 dark:hover:bg-stone-800 transition text-stone-700 dark:text-stone-300">
+              Guardar calibración en historial
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Historial de Calibraciones -->
+      <div id="mechaHistorySection" class="hidden space-y-3">
+        <h4 class="text-xs font-mono uppercase tracking-wider text-stone-400">Proyectos y Mechas Evaluadas</h4>
+        <div id="mechaHistoryList" class="space-y-2"></div>
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 3: EL SEMBRADOR DE HOY (LA CAUSA)   -->
+    <!-- ========================================== -->
+    <section id="section-sembrador" class="hidden space-y-6">
+      
+      <div class="bg-white dark:bg-stone-900 p-6 rounded-3xl border border-stone-200/80 dark:border-stone-800/80 shadow-sm space-y-3">
+        <div class="flex items-center space-x-2 text-salvia-600 dark:text-salvia-500 text-xs font-mono font-semibold tracking-wider uppercase">
+          <span>Paso 3</span>
+          <span>·</span>
+          <span>La Causa Aquí y Ahora</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-serif font-medium text-stone-900 dark:text-stone-50 leading-tight">
+          El Sembrador de Hoy
+        </h1>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl">
+          El futuro pertenece a infinitas variables fuera de tu control. La meta lejana solo tiene una función digna: <strong>decirte qué causa sembrar hoy</strong>. El resultado se suelta; la acción se cuida con el alma.
+        </p>
+      </div>
+
+      <!-- Añadir Semilla Diaria (Doble campo Causa/Desapego) -->
+      <div class="bg-white dark:bg-stone-900 p-6 rounded-3xl border border-stone-200/80 dark:border-stone-800/80 space-y-4 shadow-sm">
+        <h3 class="font-serif text-base font-medium text-stone-900 dark:text-stone-100">Sembrar una Causa Consciente para Hoy</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Campo 1: La Causa (100% bajo control) -->
+          <div>
+            <label class="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1">
+              1. La Causa (100% bajo tu control):
+            </label>
+            <input type="text" id="seedCauseInput" placeholder="Ej: Escribir durante 40 min con atención plena..." class="w-full text-xs sm:text-sm bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-stone-900 dark:text-stone-100 focus:border-stone-400">
+            <span class="text-[10px] text-stone-400 mt-1 block">Tu intención, presencia, honestidad y esfuerzo gozoso.</span>
+          </div>
+
+          <!-- Campo 2: El Desapego (Suelto el fruto) -->
+          <div>
+            <label class="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1">
+              2. El Desapego (Suelto el fruto):
+            </label>
+            <input type="text" id="seedFruitInput" placeholder="Ej: Suelto si gusta, si se publica o si alguien me elogia..." class="w-full text-xs sm:text-sm bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-stone-900 dark:text-stone-100 focus:border-stone-400">
+            <span class="text-[10px] text-stone-400 mt-1 block">La respuesta ajena, el algoritmo, la aprobación externa.</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-2">
+          <div class="text-[11px] text-stone-400 flex items-center space-x-1.5">
+            <span class="text-salvia-500">●</span>
+            <span>Máximo 3 causas prioritarias por día para evitar la dispersión.</span>
+          </div>
+          <button onclick="addDailySeed()" class="w-full sm:w-auto text-xs font-semibold px-4 py-2 rounded-xl bg-stone-900 hover:bg-black text-white dark:bg-stone-100 dark:hover:bg-white dark:text-stone-900 transition flex items-center justify-center space-x-1.5">
+            <span>Depositar Semilla</span>
+            <span>🌱</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filtro y Lista de Semillas -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between text-xs text-stone-500 px-1">
+          <span class="font-mono uppercase tracking-wider text-[11px]">Causas Sembradas para Hoy</span>
+          <span id="seedsProgressText">0 de 0 cultivadas en paz</span>
+        </div>
+
+        <div id="dailySeedsContainer" class="space-y-3">
+          <!-- Render dinámico -->
+        </div>
+      </div>
+
+      <!-- Recordatorio Libre de Culpa -->
+      <div class="p-4 rounded-2xl bg-salvia-50/50 dark:bg-stone-900/40 border border-salvia-200/40 dark:border-stone-800/60 text-xs text-stone-600 dark:text-stone-400 flex items-start space-x-3">
+        <span class="text-salvia-600 dark:text-salvia-500 font-serif text-base mt-0.5">✦</span>
+        <p class="leading-relaxed">
+          <strong>La regla de la ecuanimidad:</strong> Aquí no hay contadores de "rachas" que te castiguen si un día no pudiste actuar. Si hoy hubo cansancio o imprevistos, descansaste con dignidad. La autocrítica punitiva es solo el ego disfrazado de disciplina. Mañana la causa vuelve a nacer intacta.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MÓDULO 4: AUDITORÍA DE FRICCIÓN (RESCATE)  -->
+    <!-- ========================================== -->
+    <section id="section-friccion" class="hidden space-y-6">
+      
+      <div class="bg-white dark:bg-stone-900 p-6 rounded-3xl border border-stone-200/80 dark:border-stone-800/80 shadow-sm space-y-3">
+        <div class="flex items-center space-x-2 text-terracotta-600 dark:text-terracotta-500 text-xs font-mono font-semibold tracking-wider uppercase">
+          <span>Paso 4</span>
+          <span>·</span>
+          <span>Desarmar los Secuestradores de la Paz</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-serif font-medium text-stone-900 dark:text-stone-50 leading-tight">
+          Auditoría de Fricción
+        </h1>
+        <p class="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed max-w-2xl">
+          Cuando te sientas atascado, ansioso, con síndrome del impostor o con prisa compulsiva, pulsa sobre la tensión que estás experimentando para recibir un <strong>reencuadre de sabiduría inmediata</strong> y recuperar tu centro.
+        </p>
+      </div>
+
+      <!-- Los 4 Secuestradores Interactivos -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        
+        <!-- Fricción 1 -->
+        <button onclick="triggerFrictionReframe('approval')" class="text-left p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:border-terracotta-400 dark:hover:border-terracotta-500/50 transition group space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase text-terracotta-600 dark:text-terracotta-400">1. Viento Mundano</span>
+            <span class="text-stone-400 group-hover:translate-x-1 transition">→</span>
+          </div>
+          <h4 class="font-serif text-base font-semibold text-stone-900 dark:text-stone-100">Búsqueda de Aprobación o Miedo a la Crítica</h4>
+          <p class="text-xs text-stone-500 leading-relaxed">
+            Sientes angustia por cómo reaccionará la gente, temor al ridículo o dependencia del aplauso.
+          </p>
+        </button>
+
+        <!-- Fricción 2 -->
+        <button onclick="triggerFrictionReframe('control')" class="text-left p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:border-salvia-400 dark:hover:border-salvia-500/50 transition group space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase text-salvia-600 dark:text-salvia-400">2. Control Estoico</span>
+            <span class="text-stone-400 group-hover:translate-x-1 transition">→</span>
+          </div>
+          <h4 class="font-serif text-base font-semibold text-stone-900 dark:text-stone-100">Querer Controlar lo Incontrolable</h4>
+          <p class="text-xs text-stone-500 leading-relaxed">
+            Tensión porque los algoritmos, los clientes, la economía o los tiempos no responden a tu voluntad.
+          </p>
+        </button>
+
+        <!-- Fricción 3 -->
+        <button onclick="triggerFrictionReframe('destination')" class="text-left p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:border-amber-400 dark:hover:border-amber-500/50 transition group space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase text-amber-600 dark:text-amber-400">3. La Falacia de la Llegada</span>
+            <span class="text-stone-400 group-hover:translate-x-1 transition">→</span>
+          </div>
+          <h4 class="font-serif text-base font-semibold text-stone-900 dark:text-stone-100">"Cuando logre X por fin estaré en paz"</h4>
+          <p class="text-xs text-stone-500 leading-relaxed">
+            Posponer el bienestar actual creyendo que el resultado final te concederá la plenitud perdida.
+          </p>
+        </button>
+
+        <!-- Fricción 4 -->
+        <button onclick="triggerFrictionReframe('comparison')" class="text-left p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-600 transition group space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase text-stone-600 dark:text-stone-400">4. Comparación Tóxica</span>
+            <span class="text-stone-400 group-hover:translate-x-1 transition">→</span>
+          </div>
+          <h4 class="font-serif text-base font-semibold text-stone-900 dark:text-stone-100">Medir tu Backstage con el Escenario Ajeno</h4>
+          <p class="text-xs text-stone-500 leading-relaxed">
+            Parálisis al ver en redes o en otros vidas aparentemente resueltas, exitosas y sin dudas.
+          </p>
+        </button>
+
+      </div>
+
+      <!-- Tarjeta de Reencuadre Filosófico Desplegable -->
+      <div id="frictionReframeBox" class="hidden p-6 rounded-3xl border bg-stone-100/90 dark:bg-stone-900/90 border-stone-300 dark:border-stone-700 space-y-3 transition">
+        <div class="flex items-center space-x-2 text-salvia-600 dark:text-salvia-400 text-xs font-mono uppercase">
+          <span>●</span>
+          <span id="reframeOrigin">Reencuadre de Consciencia</span>
+        </div>
+        <h3 id="reframeTitle" class="font-serif text-xl font-medium text-stone-900 dark:text-stone-50"></h3>
+        <p id="reframeText" class="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed"></p>
+        
+        <div class="pt-3 border-t border-stone-200 dark:border-stone-800 flex justify-between items-center text-xs">
+          <span class="text-stone-400 italic">"Vuelve a la respiración y al siguiente paso minúsculo."</span>
+          <button onclick="scrollToBreathExercise()" class="font-medium text-stone-800 dark:text-stone-200 hover:underline">
+            Ir al anclaje somático ↓
+          </button>
+        </div>
+      </div>
+
+      <!-- Ejercicio de Anclaje Somático de 1 Minuto -->
+      <div id="breathAnchorContainer" class="bg-white dark:bg-stone-900 p-6 sm:p-8 rounded-3xl border border-stone-200/80 dark:border-stone-800/80 text-center space-y-6">
+        <div>
+          <h3 class="font-serif text-lg font-medium text-stone-900 dark:text-stone-100">Anclaje Somático: Regreso a tu Eje</h3>
+          <p class="text-xs text-stone-500 dark:text-stone-400 mt-1 max-w-md mx-auto">
+            La mente confusa no se aquieta pensando más, sino sintiendo el cuerpo. Sigue el ritmo del orbe durante 3 ciclos conscientes.
+          </p>
+        </div>
+
+        <!-- Visualizador de Respiración -->
+        <div class="relative flex items-center justify-center h-44">
+          <div id="breathCircle" class="w-24 h-24 rounded-full bg-salvia-100 dark:bg-salvia-900/30 border border-salvia-300 dark:border-salvia-700 flex items-center justify-center transition-all duration-1000">
+            <span id="breathActionText" class="font-serif text-xs font-medium text-salvia-700 dark:text-salvia-300">Respira</span>
+          </div>
+        </div>
+
+        <div class="flex justify-center space-x-3">
+          <button id="breathStartBtn" onclick="toggleBreathingPacer()" class="text-xs font-medium px-4 py-2 rounded-xl bg-stone-900 hover:bg-black text-white dark:bg-stone-100 dark:hover:bg-white dark:text-stone-900 transition">
+            Iniciar Ciclo de 60 Segundos
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- MODAL DE GESTIÓN DE DATOS (IMPORT / EXPORT / MARKDOWN) -->
+  <div id="dataModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-stone-900 max-w-md w-full rounded-3xl border border-stone-200 dark:border-stone-800 p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-stone-100 dark:border-stone-800 pb-3">
+        <h3 class="font-serif text-lg font-medium text-stone-900 dark:text-stone-100">Tus Datos y Soberanía</h3>
+        <button onclick="toggleModal('dataModal', false)" class="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200">✕</button>
+      </div>
+
+      <p class="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">
+        EJE almacena todos tus cuadrantes, mechas y causas única y exclusivamente en la memoria local de tu navegador (LocalStorage). Cero servidores, cero publicidad, total privacidad.
+      </p>
+
+      <div class="space-y-2 pt-2">
+        <!-- Exportar JSON -->
+        <button onclick="exportJSON()" class="w-full text-xs font-medium py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-800 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 flex items-center justify-center space-x-2 transition">
+          <span>↓ Descargar Copia de Seguridad (JSON)</span>
+        </button>
+
+        <!-- Exportar Resumen Markdown -->
+        <button onclick="exportMarkdownSummary()" class="w-full text-xs font-medium py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-800 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 flex items-center justify-center space-x-2 transition">
+          <span>☶ Exportar Resumen de Coherencia (Markdown)</span>
+        </button>
+
+        <!-- Importar JSON -->
+        <label class="w-full text-xs font-medium py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-800 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 flex items-center justify-center space-x-2 cursor-pointer transition">
+          <span>↑ Restaurar Copia desde Archivo (JSON)</span>
+          <input type="file" id="importJsonInput" accept=".json" class="hidden" onchange="importJSON(event)">
+        </label>
+
+        <!-- Limpiar Datos -->
+        <button onclick="confirmResetData()" class="w-full text-xs font-medium py-2.5 px-3 rounded-xl border border-rose-200 dark:border-rose-900/40 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 flex items-center justify-center space-x-2 transition">
+          <span>Reiniciar Datos de la Aplicación</span>
+        </button>
+      </div>
+
+      <div class="pt-3 border-t border-stone-100 dark:border-stone-800 flex justify-end">
+        <button onclick="toggleModal('dataModal', false)" class="text-xs font-medium px-4 py-2 rounded-xl bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900">
+          Entendido
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICACIÓN SUTIL (SIN ALERT) -->
+  <div id="toast" class="fixed bottom-6 right-6 max-w-sm bg-stone-900 text-stone-100 dark:bg-stone-100 dark:text-stone-900 text-xs px-4 py-3 rounded-2xl shadow-xl transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none z-50 flex items-center space-x-2.5">
+    <span class="text-salvia-400 dark:text-salvia-600 text-sm">✦</span>
+    <span id="toastMsg" class="font-medium"></span>
+  </div>
+
+  <!-- PIE DE PÁGINA SOBRIO -->
+  <footer class="w-full border-t border-stone-200/80 dark:border-stone-800/80 py-6 text-center text-xs text-stone-400 dark:text-stone-500">
+    <p class="font-serif italic">"El sentido se descubre respondiendo a la vida, no exigiéndole garantías."</p>
+    <p class="text-[10px] mt-1 font-mono uppercase tracking-wider text-stone-400 dark:text-stone-600">EJE · Código Abierto · Diseñado para vivir en coherencia</p>
+  </footer>
+
+  <!-- LÓGICA DE APLICACIÓN EN JS PURO (AUTÓNOMA) -->
+  <script>
+    // ESTADO GENERAL DE LA APLICACIÓN
+    const DB_KEY = 'eje_coherence_app_state_v1';
+    
+    let state = {
+      theme: 'light',
+      ikigai: {
+        joy: '',
+        strengths: '',
+        need: '',
+        sustain: '',
+        statement: '',
+        lastSynthesized: null
+      },
+      mechaAudits: [],
+      seeds: [] // { id, cause, fruit, date: YYYY-MM-DD, done: boolean }
+    };
+
+    // Colección de citas contemplativas
+    const wisdomQuotes = [
+      "«La meta no es un destino donde descansar, sino la brújula que te indica qué causa sembrar hoy.» — Lama Rinchen",
+      "«No nos perturban las cosas que pasan, sino las opiniones que tenemos sobre ellas.» — Epicteto",
+      "«Cuando ya no podemos cambiar una situación, tenemos el desafío de cambiarnos a nosotros mismos.» — Viktor Frankl",
+      "«El esfuerzo gozoso (Vīrya) no es apretar los dientes, sino la alegría serena de entregarse a una obra noble.»",
+      "«Siembra la mejor causa de la que seas capaz y devuelve el fruto al misterio del mundo.»",
+      "«Tu valía no depende del aplauso del público; la verdad de un árbol está en la hondura de sus raíces.»"
+    ];
+
+    // INICIALIZACIÓN
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      initTheme();
+      renderRandomQuote();
+      renderAllViews();
+    });
+
+    function loadState() {
+      try {
+        const stored = localStorage.getItem(DB_KEY);
+        if (stored) {
+          state = Object.assign(state, JSON.parse(stored));
+        } else {
+          // Datos iniciales demostrativos de bienvenida
+          state.ikigai = {
+            joy: 'Aprender, investigar y sintetizar ideas profundas para compartirlas con calma.',
+            strengths: 'Capacidad de escucha atenta, claridad para estructurar conceptos y templanza.',
+            need: 'La desorientación ansiosa de tantas personas que viven atrapadas en la prisa y la validación externa.',
+            sustain: 'Crear proyectos útiles, asesorar con honestidad y vivir con sencillez sin gastos desmedidos.',
+            statement: 'Mi dirección vital es acompañar a otros a recuperar su centro mediante la claridad y la escucha, sembrando causas serenas cada día sin apego al reconocimiento.',
+            lastSynthesized: new Date().toISOString()
+          };
+          state.seeds = [
+            {
+              id: 'seed-1',
+              cause: 'Dedicar 45 minutos a profundizar en un texto con presencia y sin mirar notificaciones.',
+              fruit: 'Suelto la prisa por terminarlo rápido o querer aparentar erudición.',
+              date: getTodayDateString(),
+              done: true
+            },
+            {
+              id: 'seed-2',
+              cause: 'Escuchar a un ser querido con paciencia genuina, sin interrumpir con mis opiniones.',
+              fruit: 'Suelto la necesidad de tener la razón o darle consejos no pedidos.',
+              date: getTodayDateString(),
+              done: false
+            }
+          ];
+          saveState();
+        }
+      } catch (e) {
+        console.error('Error cargando estado:', e);
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(DB_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.error('Error guardando estado:', e);
+      }
+    }
+
+    function getTodayDateString() {
+      return new Date().toISOString().split('T')[0];
+    }
+
+    // TEMA (OSCURO / CLARO)
+    function initTheme() {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = state.theme || (prefersDark ? 'dark' : 'light');
+      applyTheme(theme);
+      document.getElementById('themeToggleBtn').addEventListener('click', () => {
+        applyTheme(state.theme === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    function applyTheme(theme) {
+      state.theme = theme;
+      const html = document.documentElement;
+      const sun = document.getElementById('sunIcon');
+      const moon = document.getElementById('moonIcon');
+      if (theme === 'dark') {
+        html.classList.add('dark');
+        sun.classList.remove('hidden');
+        moon.classList.add('hidden');
+      } else {
+        html.classList.remove('dark');
+        moon.classList.remove('hidden');
+        sun.classList.add('hidden');
+      }
+      saveState();
+    }
+
+    function renderRandomQuote() {
+      const q = wisdomQuotes[Math.floor(Math.random() * wisdomQuotes.length)];
+      document.getElementById('wisdomText').textContent = q;
+    }
+
+    // PESTAÑAS (TABS)
+    function switchTab(tabKey) {
+      const tabs = ['ikigai', 'mecha', 'sembrador', 'friccion'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tabBtn-${t}`);
+        const sec = document.getElementById(`section-${t}`);
+        if (t === tabKey) {
+          btn.classList.add('border-stone-900', 'text-stone-900', 'dark:border-stone-100', 'dark:text-stone-100');
+          btn.classList.remove('border-transparent', 'text-stone-500', 'dark:text-stone-400');
+          sec.classList.remove('hidden');
+        } else {
+          btn.classList.remove('border-stone-900', 'text-stone-900', 'dark:border-stone-100', 'dark:text-stone-100');
+          btn.classList.add('border-transparent', 'text-stone-500', 'dark:text-stone-400');
+          sec.classList.add('hidden');
+        }
+      });
+      if (tabKey === 'sembrador') renderSeeds();
+      if (tabKey === 'ikigai') renderIkigaiForm();
+      if (tabKey === 'mecha') renderMechaHistory();
+    }
+
+    // NOTIFICACIONES (TOAST)
+    function notify(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.remove('translate-y-16', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-16', 'opacity-0');
+      }, 2600);
+    }
+
+    // ==========================================
+    // MÓDULO 1: IKIGAI Y SÍNTESIS
+    // ==========================================
+    function renderIkigaiForm() {
+      document.getElementById('ikigaiJoy').value = state.ikigai.joy || '';
+      document.getElementById('ikigaiStrengths').value = state.ikigai.strengths || '';
+      document.getElementById('ikigaiNeed').value = state.ikigai.need || '';
+      document.getElementById('ikigaiSustain').value = state.ikigai.sustain || '';
+
+      const card = document.getElementById('activeCompassCard');
+      if (state.ikigai.statement) {
+        card.classList.remove('hidden');
+        document.getElementById('compassStatement').textContent = `«${state.ikigai.statement}»`;
+        document.getElementById('compassSubtext').textContent = 
+          `Esta declaración sintetiza lo que te da vitalidad, tus dones innatos y el servicio a los demás. No es una meta para alimentar la vanidad, sino tu brújula para calibrar cada decisión diaria.`;
+      } else {
+        card.classList.add('hidden');
+      }
+    }
+
+    function synthesizeCompass() {
+      const joy = document.getElementById('ikigaiJoy').value.trim();
+      const strengths = document.getElementById('ikigaiStrengths').value.trim();
+      const need = document.getElementById('ikigaiNeed').value.trim();
+      const sustain = document.getElementById('ikigaiSustain').value.trim();
+
+      if (!joy && !strengths && !need) {
+        notify('Completa al menos los campos de gozo, fortalezas o necesidad.');
+        return;
+      }
+
+      state.ikigai.joy = joy;
+      state.ikigai.strengths = strengths;
+      state.ikigai.need = need;
+      state.ikigai.sustain = sustain;
+
+      // Generación inteligente de síntesis coherente
+      let stmt = "";
+      if (strengths && need && joy) {
+        stmt = `Vivir utilizando mi capacidad para ${strengths.toLowerCase()} al servicio de ${need.toLowerCase()}, encontrando gozo profundo en ${joy.toLowerCase()} con sobriedad y presencia.`;
+      } else if (joy && need) {
+        stmt = `Caminar entregándome a ${joy.toLowerCase()}, respondiendo compasivamente ante ${need.toLowerCase()} de forma sostenible y serena.`;
+      } else {
+        stmt = `Cultivar mi vocación auténtica en coherencia con mis dones naturales, sembrando presencia sin exigir aplausos exteriores.`;
+      }
+
+      state.ikigai.statement = stmt;
+      state.ikigai.lastSynthesized = new Date().toISOString();
+      saveState();
+      renderIkigaiForm();
+      notify('¡Brújula Vital sintetizada y activa!');
+    }
+
+    function editCurrentCompass() {
+      document.getElementById('ikigaiJoy').focus();
+      notify('Puedes ajustar tus 4 cuadrantes y re-sintetizar.');
+    }
+
+    // ==========================================
+    // MÓDULO 2: TEST DE MECHA
+    // ==========================================
+    let currentMechaResult = null;
+
+    function calculateMechaScore() {
+      const project = document.getElementById('mechaProjectTitle').value.trim();
+      if (!project) {
+        notify('Escribe el nombre del proyecto o meta que deseas calibrar.');
+        document.getElementById('mechaProjectTitle').focus();
+        return;
+      }
+
+      const q1 = document.querySelector('input[name="mq1"]:checked');
+      const q2 = document.querySelector('input[name="mq2"]:checked');
+      const q3 = document.querySelector('input[name="mq3"]:checked');
+      const q4 = document.querySelector('input[name="mq4"]:checked');
+      const q5 = document.querySelector('input[name="mq5"]:checked');
+
+      if (!q1 || !q2 || !q3 || !q4 || !q5) {
+        notify('Responde a las 5 preguntas para calibrar la mecha.');
+        return;
+      }
+
+      const answers = [q1.value, q2.value, q3.value, q4.value, q5.value];
+      const serenaCount = answers.filter(a => a === 'serena').length;
+      const score = Math.round((serenaCount / 5) * 100);
+
+      const resultBox = document.getElementById('mechaResultBox');
+      const badge = document.getElementById('mechaBadge');
+      const title = document.getElementById('mechaTitle');
+      const pct = document.getElementById('mechaScorePercentage');
+      const barSerena = document.getElementById('mechaBarSerena');
+      const barReactiva = document.getElementById('mechaBarReactiva');
+      const diagnosis = document.getElementById('mechaDiagnosis');
+      const prescription = document.getElementById('mechaPrescription');
+
+      resultBox.classList.remove('hidden');
+      pct.textContent = `${score}%`;
+      barSerena.style.width = `${score}%`;
+      barReactiva.style.width = `${100 - score}%`;
+
+      if (score >= 80) {
+        badge.className = "text-xs font-mono font-medium uppercase px-2.5 py-0.5 rounded-full bg-salvia-100 text-salvia-800 dark:bg-salvia-950 dark:text-salvia-300";
+        badge.textContent = "Combustión Serena / Elevada";
+        title.textContent = `«${project}» nace de una mecha pura y silenciosa`;
+        diagnosis.textContent = "Tu proyecto está impulsado por el amor a la obra, la curiosidad y la alegría del proceso. Esta energía es de combustión lenta, no se desgasta fácilmente y no depende del vaivén de las opiniones ajenas.";
+        prescription.textContent = "Sigue cuidando el paso presente. Recuerda que cuando concluyas este proyecto, será simplemente el punto de partida para seguir aprendiendo. Mantén la devoción por la causa.";
+      } else if (score >= 50) {
+        badge.className = "text-xs font-mono font-medium uppercase px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300";
+        badge.textContent = "Mecha Mixta (Atento a la prisa)";
+        title.textContent = `«${project}» combina vocación real con destellos de ego`;
+        diagnosis.textContent = "Existe un deseo genuino de aportar valor, pero hay una corriente subterránea que busca confirmación, prisa por validarte o temor a quedar en la sombra. Si no la vigilas, el cansancio mental te alcanzará.";
+        prescription.textContent = "Purifica la mecha: Pregúntate honestamente: 'Si esto no se hiciera viral o si nadie me diera las gracias, ¿merecería la pena hacerlo bien?'. Reduce la prisa y renuncia a comparar tus tiempos con los de otros.";
+      } else {
+        badge.className = "text-xs font-mono font-medium uppercase px-2.5 py-0.5 rounded-full bg-terracotta-100 text-terracotta-800 dark:bg-terracotta-950 dark:text-terracotta-300";
+        badge.textContent = "Combustión Reactiva (Mecha Gritosa)";
+        title.textContent = `Alerta: «${project}» se alimenta de la carencia o el miedo`;
+        diagnosis.textContent = "Este objetivo está siendo impulsado predominantemente por los 'vientos mundanos': miedo a quedarse atrás, necesidad de demostrar tu valía o revancha personal. Esta mecha arde muy ruidosamente, quema tu salud y genera una ansiedad constante por el resultado.";
+        prescription.textContent = "No tires el proyecto: cambia el 'para qué'. Deja de usarlo como un examen para demostrar que vales. Reorienta el proyecto como un humilde servicio o aprendizaje. Suelta el control del resultado antes de que te desgaste.";
+      }
+
+      currentMechaResult = {
+        id: 'mecha-' + Date.now(),
+        project: project,
+        score: score,
+        badgeText: badge.textContent,
+        date: new Date().toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })
+      };
+
+      notify('Calibración completada con éxito.');
+    }
+
+    function saveMechaAudit() {
+      if (!currentMechaResult) return;
+      state.mechaAudits.unshift(currentMechaResult);
+      saveState();
+      renderMechaHistory();
+      notify('Guardado en el historial de mechas.');
+    }
+
+    function renderMechaHistory() {
+      const container = document.getElementById('mechaHistorySection');
+      const list = document.getElementById('mechaHistoryList');
+      if (state.mechaAudits.length === 0) {
+        container.classList.add('hidden');
+        return;
+      }
+      container.classList.remove('hidden');
+      list.innerHTML = '';
+
+      state.mechaAudits.slice(0, 5).forEach((audit, index) => {
+        const item = document.createElement('div');
+        item.className = "flex items-center justify-between p-3 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-xs";
+        item.innerHTML = `
+          <div class="space-y-0.5">
+            <span class="font-medium text-stone-900 dark:text-stone-100">${escapeHtml(audit.project)}</span>
+            <div class="flex items-center space-x-2 text-[10px] text-stone-400">
+              <span>${audit.date}</span>
+              <span>·</span>
+              <span>${audit.badgeText}</span>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3">
+            <span class="font-serif font-bold text-sm text-stone-700 dark:text-stone-300">${audit.score}%</span>
+            <button onclick="deleteMechaAudit(${index})" class="text-stone-400 hover:text-rose-500">✕</button>
+          </div>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    function deleteMechaAudit(index) {
+      state.mechaAudits.splice(index, 1);
+      saveState();
+      renderMechaHistory();
+    }
+
+    // ==========================================
+    // MÓDULO 3: EL SEMBRADOR DE HOY (SEMILLAS)
+    // ==========================================
+    function addDailySeed() {
+      const causeInput = document.getElementById('seedCauseInput');
+      const fruitInput = document.getElementById('seedFruitInput');
+      const cause = causeInput.value.trim();
+      const fruit = fruitInput.value.trim();
+
+      if (!cause) {
+        notify('Define la causa concreta sobre la que tienes 100% de control.');
+        causeInput.focus();
+        return;
+      }
+
+      const today = getTodayDateString();
+      const todaySeeds = state.seeds.filter(s => s.date === today);
+
+      if (todaySeeds.length >= 3) {
+        notify('La sabiduría aconseja 3 causas esenciales para no dispersar la presencia.');
+      }
+
+      state.seeds.push({
+        id: 'seed-' + Date.now(),
+        cause: cause,
+        fruit: fruit || 'Suelto cualquier expectativa rígida sobre el resultado.',
+        date: today,
+        done: false
+      });
+
+      causeInput.value = '';
+      fruitInput.value = '';
+      saveState();
+      renderSeeds();
+      notify('Semilla de presencia sembrada para hoy.');
+    }
+
+    function toggleSeedDone(id) {
+      const item = state.seeds.find(s => s.id === id);
+      if (item) {
+        item.done = !item.done;
+        saveState();
+        renderSeeds();
+        if (item.done) {
+          notify('Causa honrada con presencia. El fruto queda libre.');
+        }
+      }
+    }
+
+    function deleteSeed(id) {
+      state.seeds = state.seeds.filter(s => s.id !== id);
+      saveState();
+      renderSeeds();
+    }
+
+    function renderSeeds() {
+      const container = document.getElementById('dailySeedsContainer');
+      const progress = document.getElementById('seedsProgressText');
+      const today = getTodayDateString();
+      const todaySeeds = state.seeds.filter(s => s.date === today);
+
+      const doneCount = todaySeeds.filter(s => s.done).length;
+      progress.textContent = `${doneCount} de ${todaySeeds.length} causas cultivadas en paz`;
+
+      container.innerHTML = '';
+
+      if (todaySeeds.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center rounded-3xl bg-white/50 dark:bg-stone-900/40 border border-dashed border-stone-200 dark:border-stone-800 text-xs text-stone-400 space-y-1">
+            <p class="font-serif italic text-sm text-stone-500 dark:text-stone-400">Hoy es una página en blanco.</p>
+            <p>¿Qué causa limpia y serena vas a sembrar hoy sin depender del aplauso ajeno?</p>
+          </div>
+        `;
+        return;
+      }
+
+      todaySeeds.forEach(seed => {
+        const card = document.createElement('div');
+        card.className = `p-4 rounded-2xl border transition-all duration-200 space-y-2 ${
+          seed.done 
+            ? 'bg-stone-100/70 dark:bg-stone-900/40 border-stone-200/80 dark:border-stone-800/80 text-stone-400' 
+            : 'bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-800 text-stone-800 dark:text-stone-200 shadow-sm'
+        }`;
+
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-start space-x-3 flex-1">
+              <button onclick="toggleSeedDone('${seed.id}')" aria-label="Marcar causa" class="w-5 h-5 mt-0.5 rounded-lg border flex items-center justify-center transition shrink-0 ${
+                seed.done 
+                  ? 'border-salvia-500 bg-salvia-500/20 text-salvia-600 dark:text-salvia-400' 
+                  : 'border-stone-300 dark:border-stone-600 hover:border-stone-400'
+              }">
+                ${seed.done ? '✓' : ''}
+              </button>
+              <div class="space-y-1">
+                <p class="text-xs sm:text-sm font-medium leading-relaxed ${seed.done ? 'line-through opacity-75' : ''}">
+                  ${escapeHtml(seed.cause)}
+                </p>
+                <div class="text-[11px] text-stone-500 dark:text-stone-400 flex items-center space-x-1.5">
+                  <span class="text-terracotta-500 italic">Desapego:</span>
+                  <span class="italic">${escapeHtml(seed.fruit)}</span>
+                </div>
+              </div>
+            </div>
+            <button onclick="deleteSeed('${seed.id}')" class="text-stone-400 hover:text-rose-500 text-xs px-2 py-1">✕</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // ==========================================
+    // MÓDULO 4: AUDITORÍA DE FRICCIÓN & ANCLAJE
+    // ==========================================
+    const reframesData = {
+      approval: {
+        origin: "Los 8 Vientos Mundanos (Dharma)",
+        title: "El Viento del Halago y la Crítica",
+        text: "Cuando tu bienestar depende del aplauso ajeno, le has entregado las llaves de tu paz a la mente confusa de los demás. La alabanza y el desprecio son vientos temporales: hoy te ensalzan y mañana te olvidan. Regresa a la pregunta del ermitaño: '¿Esta acción es buena y honesta en sí misma?'. Si lo es, camina con dignidad y suelta la opinión del mundo."
+      },
+      control: {
+        origin: "Dicotomía del Control (Estoicismo)",
+        title: "Confundir la Flecha con el Viento",
+        text: "El arquero sabio cuida la postura, la respiración, la tensión del arco y la pureza del disparo: eso está 100% bajo su control. Pero una vez la flecha deja la cuerda, el viento, el pájaro o la presa ya no le pertenecen. La ansiedad no es más que intentar controlar el vuelo de la flecha después de soltarla. Ocúpate únicamente de tu postura ahora mismo."
+      },
+      destination: {
+        origin: "La Falacia del Punto de Llegada (Impermanencia)",
+        title: "La Cima es solo el Inicio de Otra Colina",
+        text: "Creer que 'cuando alcance esta meta por fin seré feliz' es el engaño predilecto de la mente. Cuando alcances esa meta, durará 24 horas antes de que surja una nueva preocupación o vacío. El camino y el destino son el mismo instante. Si no aprendes a habitar en paz este martes ordinario mientras trabajas, ninguna cumbre te concederá el descanso que buscas."
+      },
+      comparison: {
+        origin: "Logoterapia y Singularidad (Viktor Frankl)",
+        title: "Nadie Puede Vivir Tu Tarea",
+        text: "La comparación es una distorsión estadística: estás comparando tus dudas íntimas con la máscara ensayada y pública de otros. Nadie en el universo entero tiene tu combinación exacta de dones, cicatrices, contexto y sensibilidad. La pregunta que la vida te hace hoy está dirigida únicamente a ti, y nadie más puede responderla en tu lugar. Mira tu propia tierra y riega tu brote."
+      }
+    };
+
+    function triggerFrictionReframe(type) {
+      const data = reframesData[type];
+      if (!data) return;
+
+      const box = document.getElementById('frictionReframeBox');
+      document.getElementById('reframeOrigin').textContent = data.origin;
+      document.getElementById('reframeTitle').textContent = data.title;
+      document.getElementById('reframeText').textContent = data.text;
+
+      box.classList.remove('hidden');
+      box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      notify('Reencuadre cargado en tu auditoría.');
+    }
+
+    function scrollToBreathExercise() {
+      document.getElementById('breathAnchorContainer').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // PACER DE RESPIRACIÓN
+    let breathInterval = null;
+    let breathActive = false;
+
+    function toggleBreathingPacer() {
+      const circle = document.getElementById('breathCircle');
+      const actionText = document.getElementById('breathActionText');
+      const btn = document.getElementById('breathStartBtn');
+
+      if (breathActive) {
+        clearInterval(breathInterval);
+        breathActive = false;
+        circle.classList.remove('animate-breathe');
+        circle.style.transform = "scale(1)";
+        actionText.textContent = "Respira";
+        btn.textContent = "Iniciar Ciclo de 60 Segundos";
+        notify('Ejercicio pausado.');
+      } else {
+        breathActive = true;
+        btn.textContent = "Detener Anclaje";
+        circle.classList.add('animate-breathe');
+        notify('Iniciando ciclo: Sigue la respiración con el cuerpo.');
+
+        let phase = 0;
+        const phases = [
+          { text: "Inhala calma (4s)", dur: 4000 },
+          { text: "Habita el espacio (4s)", dur: 4000 },
+          { text: "Exhala y suelta todo (6s)", dur: 6000 }
+        ];
+
+        function runPhase() {
+          if (!breathActive) return;
+          const current = phases[phase];
+          actionText.textContent = current.text;
+          breathInterval = setTimeout(() => {
+            phase = (phase + 1) % phases.length;
+            runPhase();
+          }, current.dur);
+        }
+        runPhase();
+      }
+    }
+
+    // ==========================================
+    // EXPORTACIÓN, IMPORTACIÓN Y RESPALDO
+    // ==========================================
+    function toggleModal(modalId, show) {
+      const el = document.getElementById(modalId);
+      if (show) el.classList.remove('hidden');
+      else el.classList.add('hidden');
+    }
+
+    function exportJSON() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
+      const a = document.createElement('a');
+      a.href = dataStr;
+      a.download = `eje_coherencia_respaldo_${getTodayDateString()}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      notify('Copia de seguridad JSON descargada.');
+    }
+
+    function importJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (parsed && typeof parsed === 'object') {
+            state = Object.assign(state, parsed);
+            saveState();
+            renderAllViews();
+            toggleModal('dataModal', false);
+            notify('¡Datos restaurados con éxito!');
+          }
+        } catch (err) {
+          notify('El archivo no tiene un formato JSON válido.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function exportMarkdownSummary() {
+      let md = `# EJE — Resumen de Coherencia Vital\n`;
+      md += `*Fecha: ${new Date().toLocaleDateString('es-ES')}*\n\n`;
+
+      md += `## 1. Mi Brújula Vital Activa\n`;
+      md += `> ${state.ikigai.statement || 'No definida aún.'}\n\n`;
+      md += `- **Lo que me da gozo limpio:** ${state.ikigai.joy || '—'}\n`;
+      md += `- **Fortalezas naturales (Svadharma):** ${state.ikigai.strengths || '—'}\n`;
+      md += `- **La necesidad del mundo que atiendo:** ${state.ikigai.need || '—'}\n`;
+      md += `- **Sostenibilidad energética y material:** ${state.ikigai.sustain || '—'}\n\n`;
+
+      md += `## 2. Causas de Hoy (Foco en el presente)\n`;
+      const today = getTodayDateString();
+      const todaySeeds = state.seeds.filter(s => s.date === today);
+      if (todaySeeds.length === 0) {
+        md += `*No hay causas registradas hoy.*\n`;
+      } else {
+        todaySeeds.forEach(s => {
+          md += `- [${s.done ? 'x' : ' '}] **Causa:** ${s.cause} | *Desapego:* ${s.fruit}\n`;
+        });
+      }
+
+      md += `\n## 3. Principio Rector\n`;
+      md += `*«La meta lejana solo existe para decirme qué sembrar hoy; mi serenidad radica en la causa presente y no en el fruto.»*\n`;
+
+      const dataStr = "data:text/markdown;charset=utf-8," + encodeURIComponent(md);
+      const a = document.createElement('a');
+      a.href = dataStr;
+      a.download = `eje_resumen_coherencia_${getTodayDateString()}.md`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      notify('Resumen en Markdown exportado.');
+    }
+
+    function confirmResetData() {
+      if (confirm('¿Deseas reiniciar todos los datos a su estado inicial? Esta acción no se puede deshacer si no tienes copia.')) {
+        localStorage.removeItem(DB_KEY);
+        location.reload();
+      }
+    }
+
+    function renderAllViews() {
+      renderIkigaiForm();
+      renderMechaHistory();
+      renderSeeds();
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/[&<>"']/g, function(m) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        }[m];
+      });
+    }
+  </script>
+</body>
+</html>
